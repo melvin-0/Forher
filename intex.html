@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You, Always ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+body{
+  margin:0;
+  font-family:'Playfair Display',serif;
+  background:radial-gradient(circle at top,#fde2e4,#fff);
+  color:#3a1f2d;
+  text-align:center;
+  overflow-x:hidden;
+  transition:background 1s,color 1s;
+}
+
+body.night{
+  background:radial-gradient(circle at top,#1a0f14,#000);
+  color:#f5d7e3;
+}
+body.night .card{
+  background:rgba(255,255,255,0.08);
+}
+
+/* CINEMATIC YES */
+#cinematic{
+  position:fixed;
+  inset:0;
+  background:black;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity 3s ease;
+  z-index:2000;
+}
+#cinematic.show{
+  opacity:1;
+  pointer-events:auto;
+}
+#cinematic h1{
+  color:#f5d7e3;
+  font-family:'Great Vibes',cursive;
+  font-size:4rem;
+  animation:fadeText 4s ease forwards;
+}
+
+@keyframes fadeText{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+/* EYES REVEAL */
+#eyesOverlay{
+  position:fixed;
+  inset:0;
+  background:black;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity 2s ease;
+  z-index:3000;
+}
+#eyesOverlay.show{
+  opacity:1;
+  pointer-events:auto;
+}
+#eyesOverlay p{
+  color:white;
+  font-size:1.4rem;
+  margin-bottom:30px;
+  opacity:0;
+  animation:fadeIn 2s forwards;
+}
+#eyesOverlay img{
+  max-width:80%;
+  max-height:70vh;
+  border-radius:25px;
+  box-shadow:0 0 60px rgba(255,182,193,0.6);
+  opacity:0;
+  animation:fadeIn 2s forwards;
+  animation-delay:2s;
+}
+
+@keyframes fadeIn{
+  to{opacity:1;}
+}
+
+section{
+  padding:120px 20px;
+  max-width:1100px;
+  margin:auto;
+}
+
+h1{font-family:'Great Vibes',cursive;font-size:4rem;}
+h2{font-size:2.5rem;margin-bottom:30px;}
+p{font-size:1.25rem;line-height:2;}
+
+.fade{
+  opacity:0;
+  transform:translateY(40px);
+  transition:all 1.4s ease;
+}
+.fade.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.heart{
+  position:fixed;
+  bottom:-20px;
+  font-size:22px;
+  animation:floatUp 7s linear infinite;
+  opacity:0.5;
+  pointer-events:none;
+}
+@keyframes floatUp{
+  from{transform:translateY(0);}
+  to{transform:translateY(-120vh);}
+}
+
+video{
+  width:100%;
+  max-width:760px;
+  border-radius:22px;
+  box-shadow:0 25px 50px rgba(0,0,0,.25);
+}
+
+.slideshow{
+  max-width:600px;
+  margin:60px auto 0;
+}
+.slideshow img{
+  width:100%;
+  border-radius:20px;
+  display:none;
+}
+.slideshow img.active{
+  display:block;
+}
+
+.reasons{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
+}
+.card{
+  background:white;
+  padding:35px;
+  border-radius:22px;
+}
+
+button{
+  background:#c9184a;
+  color:white;
+  border:none;
+  padding:18px 38px;
+  border-radius:40px;
+  cursor:pointer;
+}
+
+.music-btn,.night-btn{
+  position:fixed;
+  right:20px;
+  z-index:1000;
+  padding:12px 22px;
+}
+.music-btn{top:20px;}
+.night-btn{top:70px;}
+@media (max-width: 768px) {
+
+  h1 {
+    font-size: 2.8rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+
+  section {
+    padding: 80px 15px;
+  }
+
+  button {
+    padding: 14px 28px;
+    font-size: 1rem;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="cinematic">
+  <h1>This isn’t the end… <br> it’s the beginning ❤️</h1>
+</div>
+
+<div id="eyesOverlay" onclick="closeEyesReveal()">
+  <p>Now open your eyes…</p>
+  <img src="firstpicc.jpg" alt="My favorite view">
+</div>
+
+<audio id="bgMusic" loop>
+  <source src="epidivanthayo.mp3" type="audio/mpeg">
+</audio>
+
+<button class="music-btn" onclick="toggleMusic()">🎶 Play Music</button>
+<button class="night-btn" onclick="toggleNight()">🌙 Night Mode</button>
+
+<script>
+for(let i=0;i<25;i++){
+  let h=document.createElement('div');
+  h.className='heart';
+  h.innerText='❤️';
+  h.style.left=Math.random()*100+'vw';
+  h.style.animationDelay=Math.random()*7+'s';
+  document.body.appendChild(h);
+}
+</script>
+
+<section class="fade">
+  <h1>Dear Hridumma</h1>
+  <p>
+    Idhe verum ore website alla <br>
+    enik enghne ente feelings express chyanonn ariyilla <br>
+      ee website ninak vendiyane ninakk mathram <br>
+    I MISS YOU </p>
+</section>
+
+<section class="fade">
+  <h2>Our Story</h2>
+  <p>
+    Hridumma ninne njan adhyam kanunne ore whatsapp status koodeyane anne <br>
+    ninne enikk ishtayi nammal samsarich koree njn ninne nallapole manasilakki<br>
+    enee adhyayit ore aal care chynn enet karyangal okke anweshikunn adhokke<br>
+    ente lifil firttime appo njan thirumanichu you are the one for me ennu.<br>
+    nammal koore life spend chythu happy aayirunn appo ore 1half years break<br>
+    The worst dicition i ever take in my life taking a break ente thettane <br>
+    ente mathram ninne njan kore vishamipichu koree njn karanam ninte life onnum<br>
+    aakandann karuthi ninne njan avoid chyunna pole chythitumm enne konne pattanghjitum<br>
+    anghne okke chyendivannu but you are the one for me and forever verarkum <br>
+    ninak vendi mathram ahne njan mariyathe i change my life for u as you wish <br>
+    i am really happy to be with you really love you hridumma.   .
+  </p>
+
+</section>
+
+<section class="fade">
+  <h2>A Moment Frozen in Time</h2>
+  <video controls>
+    <source src="us234.mp4" type="video/mp4">
+  </video>
+</section>
+
+<section class="fade">
+<h2>US</h2>
+<div class="slideshow">
+  <img src="IMG_5486.jpg" class="active">
+  <img src="IMG_6194.jpg">
+  <img src="us123.jpg">
+</div>
+</section>
+<section class="fade">
+  <h2>Why I Love You</h2>
+  <div class="reasons">
+    <div class="card">Ne ente ellam ahne</div>
+    <div class="card">The girl who need me to get sleep</div>
+    <div class="card">I cant be without you..</div>
+    <div class="card">The girl doesn't judge me</div>
+    <div class="card">She made me a better person.</div>
+    <div class="card">Ente ella downfallilum koode ninnathine</div>
+  </div>
+
+</section>
+
+<section class="fade">
+<h2>Just One More Thing</h2>
+<button onclick="openEyesReveal()">Close your eyes for a moment ❤️</button>
+</section>
+
+<section class="fade">
+<h2>One Last Question</h2>
+<p>Will you be my Valentine? 💖</p>
+<div style="position:relative;height:180px; max-width:300px; margin:auto;">
+<button onclick="yesEnding()">Yes 💕</button>
+<button id="noBtn" style="position:absolute;left:60%;">No 🙃</button>
+</div>
+</section>
+
+<script>
+/* FADE */
+const fades=document.querySelectorAll('.fade');
+window.addEventListener('scroll',()=>{
+  fades.forEach(f=>{
+    if(f.getBoundingClientRect().top<window.innerHeight-120){
+      f.classList.add('show');
+    }
+  });
+});
+
+/* SLIDESHOW – FINAL FIX */
+document.addEventListener('DOMContentLoaded',()=>{
+  const slides=document.querySelectorAll('.slideshow img');
+  let index=0;
+  if(slides.length===0) return;
+
+  slides.forEach(img=>img.classList.remove('active'));
+  slides[0].classList.add('active');
+
+  setInterval(()=>{
+    slides[index].classList.remove('active');
+    index=(index+1)%slides.length;
+    slides[index].classList.add('active');
+  },3000);
+});
+
+/* CONTROLS */
+let playing=false;
+function toggleMusic(){
+  const m=document.getElementById('bgMusic');
+  playing?m.pause():m.play();
+  playing=!playing;
+}
+function toggleNight(){
+  document.body.classList.toggle('night');
+}
+function yesEnding(){
+  document.getElementById('cinematic').classList.add('show');
+}
+function openEyesReveal(){
+  document.getElementById('eyesOverlay').classList.add('show');
+}
+function closeEyesReveal(){
+  document.getElementById('eyesOverlay').classList.remove('show');
+}
+/* 💔 NO BUTTON RUNS AWAY */
+const noBtn = document.getElementById('noBtn');
+
+noBtn.addEventListener('mouseover', moveNoButton);
+noBtn.addEventListener('click', moveNoButton);
+
+function moveNoButton() {
+  const container = noBtn.parentElement;
+
+  const maxX = container.clientWidth - noBtn.offsetWidth;
+  const maxY = container.clientHeight - noBtn.offsetHeight;
+
+  const randomX = Math.random() * maxX;
+  const randomY = Math.random() * maxY;
+
+  noBtn.style.left = randomX + 'px';
+  noBtn.style.top = randomY + 'px';
+}
+
+</script>
+
+</body>
+</html>
