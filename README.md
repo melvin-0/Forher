@@ -2,6 +2,12 @@
 website for my love
 <html>
   <body>
-    <a herf="./index.html"><click here</a>
+    <p align="center">
+Project created by <a href="https://github.com/Kichu244">Kichu244</a> to make it public
+    <br>
+       | © |
+        Reserved |
+    <br> 
+</p>
   </body>
   </html>
